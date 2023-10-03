@@ -21,6 +21,7 @@ def homepage(request):
 
 class DishListView(generic.ListView):
     model = Dish
+    queryset = Dish.objects.select_related("dish_type")
 
 
 class DishTypeListView(generic.ListView):
