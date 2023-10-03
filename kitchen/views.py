@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.views import generic
 
 from .models import Dish, DishType, Cook
 
@@ -16,3 +17,7 @@ def homepage(request):
     }
 
     return render(request, "kitchen/homepage.html", context=context)
+
+
+class DishListView(generic.ListView):
+    model = Dish
