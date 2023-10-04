@@ -1,11 +1,12 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from gastronomic_hub import settings
 
 
 class DishType(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     class Meta:
         ordering = ("name", )
@@ -25,9 +26,9 @@ class Cook(AbstractUser):
 
 
 class Dish(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2, validators=[MinValueValidator(5)])
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE, related_name="dishes")
     cooks = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="dishes")
 

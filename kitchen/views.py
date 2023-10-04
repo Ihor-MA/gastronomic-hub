@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
+from .forms import DishForm, CookCreationForm
 from .models import Dish, DishType, Cook
 
 
@@ -49,3 +51,22 @@ class DishTypeDetailView(generic.DetailView):
     model = DishType
     template_name = "kitchen/dish_type_detail.html"
     context_object_name = "dish_type"
+
+
+class DishCreateView(generic.CreateView):
+    model = Dish
+    form_class = DishForm
+    success_url = reverse_lazy("kitchen:dish-list")
+
+
+class DishTypeCreateView(generic.CreateView):
+    model = DishType
+    fields = ("name", )
+    template_name = "kitchen/dish_type_form.html"
+    success_url = reverse_lazy("kitchen:dish-type-list")
+
+
+class CookCreateView(generic.CreateView):
+    model = Cook
+    form_class = CookCreationForm
+    success_url = reverse_lazy("kitchen:cook-list")
