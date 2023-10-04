@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 from kitchen.models import Dish, Cook
 
@@ -24,3 +24,13 @@ class CookCreationForm(UserCreationForm):
             "last_name",
             "years_of_experience",
         )
+
+
+class CookUpdateForm(UserChangeForm):
+    class Meta(UserChangeForm.Meta):
+        model = Cook
+        fields = ("username", "first_name", "last_name", "years_of_experience")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["password"].widget = forms.HiddenInput()
