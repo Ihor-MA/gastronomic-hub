@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'kitchen:homepage' %}">Gastronomic Hub</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav mx-auto">
+        <a class="nav-item nav-link active mr-4" href="{% url 'kitchen:homepage' %}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active mr-4" href="{% url 'kitchen:dish-list' %}">Dishes</a>
+        <a class="nav-item nav-link active mr-4" href="{% url 'kitchen:dish-type-list' %}">Dish Types</a>
+        <a class="nav-item nav-link active" href="{% url 'kitchen:cook-list' %}">Cooks</a>
+      </div>
+      <form class="form-inline my-2 my-lg-0">
+        {% if user.is_authenticated %}
+          <span class="text-light mr-5">User: <strong class="rounded bg-secondary p-2">{{ user.get_username }}</strong></span>
+          <a href="{% url 'logout'%}?next={{request.path}}" class="btn btn-outline-danger my-2 my-sm-0" type="submit">🥺 Logout</a>
+        {% else %}
+          <a href="{% url 'login'%}?next={{request.path}}" class="btn btn-outline-primary my-2 my-sm-0" type="submit">😊 Login</a>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</nav>
+
+
