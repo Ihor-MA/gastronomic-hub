@@ -9,19 +9,13 @@
           <div class="card-body">
             <h1 class="card-title text-center mb-4">Login</h1>
 
-            {% if form.errors %}
-              <div class="alert alert-danger" role="alert">
-                Your username and password didn't match. Please try again.
-              </div>
-            {% endif %}
-
             {% if next %}
               <div class="alert alert-info" role="alert">
                 Please login to see this page.
               </div>
             {% endif %}
 
-            <form method="post" action="{% url 'login' %}">
+            <form method="post" action="{% url 'login' %}" novalidate>
               {% csrf_token %}
               {{ form|crispy }}
 
