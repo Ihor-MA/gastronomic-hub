@@ -11,7 +11,9 @@
         </div>
 
         <div class="card-body">
-          <p>Dish Type: ({{ dish.dish_type.name }})</p>
+          <h4 class="text-center">Dish Type</h4>
+          <p class="list-group-item">{{ dish.dish_type.name }}</p>
+
           <h4 class="mt-4 text-center">Cooks</h4>
 
           {% if user in dish.cooks.all %}
