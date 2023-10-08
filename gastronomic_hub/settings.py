@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-hegz@2!!4q6fyuhd2^s2(5x6kxx%d&a4s6p@j!@p*is0^7km$d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['yourdomain.com', 'youripaddress'] #TODO
 
 
 # Application definition
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "debug_toolbar",
     "kitchen",
     "crispy_forms",
     "crispy_bootstrap4",
@@ -45,7 +44,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -140,3 +138,13 @@ INTERNAL_IPS = [
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+
+if DEBUG:
+    INSTALLED_APPS += [
+        'debug_toolbar',
+    ]
+
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
