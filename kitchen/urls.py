@@ -27,16 +27,48 @@ urlpatterns = [
     path("cooks/", CookListView.as_view(), name="cook-list"),
     path("dishes/<int:pk>/", DishDetailView.as_view(), name="dish-detail"),
     path("cooks/<int:pk>/", CookDetailView.as_view(), name="cook-detail"),
-    path("dish-types/<int:pk>/", DishTypeDetailView.as_view(), name="dish-type-detail"),
+    path(
+        "dish-types/<int:pk>/",
+        DishTypeDetailView.as_view(),
+        name="dish-type-detail",
+    ),
     path("dishes/create/", DishCreateView.as_view(), name="dish-create"),
-    path("dish-types/create/", DishTypeCreateView.as_view(), name="dish-type-create"),
+    path(
+        "dish-types/create/",
+        DishTypeCreateView.as_view(),
+        name="dish-type-create",
+    ),
     path("cooks/create/", CookCreateView.as_view(), name="cook-create"),
-    path("dishes/update/<int:pk>/", DishUpdateView.as_view(), name="dish-update"),
-    path("dish-types/update/<int:pk>/", DishTypeUpdateView.as_view(), name="dish-type-update"),
-    path("cooks/update/<int:pk>/", CookUpdateView.as_view(), name="cook-update"),
-    path("dishes/<int:pk>/delete/", DishDeleteView.as_view(), name="dish-delete"),
-    path("dish-types/<int:pk>/delete/", DishTypeDeleteView.as_view(), name="dish-type-delete"),
-    path("cooks/<int:pk>/delete/", CookDeleteView.as_view(), name="cook-delete"),
+    path(
+        "dishes/update/<int:pk>/",
+        DishUpdateView.as_view(),
+        name="dish-update",
+    ),
+    path(
+        "dish-types/update/<int:pk>/",
+        DishTypeUpdateView.as_view(),
+        name="dish-type-update",
+    ),
+    path(
+        "cooks/update/<int:pk>/",
+        CookUpdateView.as_view(),
+        name="cook-update",
+    ),
+    path(
+        "dishes/<int:pk>/delete/",
+        DishDeleteView.as_view(),
+        name="dish-delete",
+    ),
+    path(
+        "dish-types/<int:pk>/delete/",
+        DishTypeDeleteView.as_view(),
+        name="dish-type-delete"
+    ),
+    path(
+        "cooks/<int:pk>/delete/",
+        CookDeleteView.as_view(),
+        name="cook-delete",
+    ),
     path(
         "cooks/<int:pk>/add-or-delete-cook",
         add_or_delete_cook,

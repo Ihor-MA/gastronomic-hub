@@ -11,30 +11,28 @@
       crossorigin="anonymous">
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=1">
-   <style>
-    body {
-      background-color: rgba(234, 191, 118, 0.99);
-      margin-top: 0;
-      padding-top: 0;
-    }
-  </style>
+
 </head>
 
 <body>
 
-  {% block navbar %}
-    {% include "includes/navbar.html" %}
-  {% endblock %}
+  <div class="wrapper">
+    {% block navbar %}
+      {% include "includes/navbar.html" %}
+    {% endblock %}
 
-  {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
+  </div>
 
   {% block pagination %}
     {% include "includes/pagination.html" %}
   {% endblock %}
 
-  {% block footer %}
-    {% include "includes/footer.html" %}
-  {% endblock %}
+  <footer class="text-center text-lg-start">
+    {% block footer %}
+      {% include "includes/footer.html" %}
+    {% endblock %}
+  </footer>
 
 </body>
 

@@ -1,25 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    Dish Type: {{ dish_type.name }}
-    <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}" class="btn btn-danger link-to-page">
-      Delete
-   </a>
-    <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}" class="btn btn-secondary link-to-page">
-     Update
-    </a>
-  </h1><br>
+  <div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center">
+      <div class="card" style="max-width: 400px;">
+        <div class="card-header bg-dark text-white">
+          <h1 class="mb-0 text-center">
+            Dish Type: {{ dish_type.name }}
+          </h1>
+        </div>
 
-  <div class="ml-3">
-    <h4>Dishes</h4>
+        <div class="card-body">
+          <div class="ml-3">
+            <h4>Dishes</h4>
 
-    {% for dish in dish_type.dishes.all %}
-        <hr>
-        <p><strong>Name:</strong> {{ dish.name }}</p>
-
-    {% empty %}
-      <p>No dish types!</p>
-    {% endfor %}
+            {% for dish in dish_type.dishes.all %}
+              <div class="card mb-3">
+                <div class="card-body">
+                  <p class="card-text"><strong>Name:</strong> {{ dish.name }}</p>
+                </div>
+              </div>
+            {% empty %}
+              <p class="card-text">No dish types!</p>
+            {% endfor %}
+          </div>
+        </div>
+      <a href="{% url 'kitchen:dish-type-list' %}" class="btn btn-primary btn-lg btn-block" >Back</a>
+      </div>
+    </div>
   </div>
 {% endblock %}
