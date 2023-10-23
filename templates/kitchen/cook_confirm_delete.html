@@ -11,6 +11,7 @@
               {% csrf_token %}
 
               <input type="submit" value="Yes" class="btn btn-danger btn-lg font-weight-bold mt-2">
+              <a href="{% url 'kitchen:cook-list' %}" class="btn btn-light btn-lg font-weight-bold mt-2">No</a>
             </form>
           </div>
         </div>
