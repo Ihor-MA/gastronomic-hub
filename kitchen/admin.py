@@ -13,13 +13,7 @@ class DishAdmin(admin.ModelAdmin):
 
 @admin.register(Cook)
 class CookAdmin(UserAdmin):
-    list_display = [
-        "username",
-        "first_name",
-        "last_name",
-        "years_of_experience",
-        "is_staff",
-    ]
+    list_display = UserAdmin.list_display + ("years_of_experience", )
     fieldsets = UserAdmin.fieldsets + (
         (
             "Additional info", {"fields": ("years_of_experience",)}
