@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">
+      Dish Type List
+    </h1>
+
+    <form method="get" action="" class="form-inline">
+      <div class="input-group mb-3">
+        {{ search_form|crispy }}
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-outline-secondary" type="button">🔍 Search</button>
+        </div>
+      </div>
+      <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-primary ml-auto mb-3">🥗 Create new type dish 🍝</a>
+    </form>
+
+    <div class="row">
+      {% if dish_type_list %}
+        {% for dish_type in dish_type_list %}
+          <div class="col-md-4 mb-4">
+            <div class="card text-center" style="background-color: #add8e6;">
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ dish_type.name }}
+                </h5>
+                <a href="{% url 'kitchen:dish-type-detail' pk=dish_type.id %}" class="btn btn-outline-info">Read more</a>
+                <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}" class="btn btn-outline-danger">Delete</a>
+                <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}" class="btn btn-outline-primary">Update</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="col-md-12">There are no dish types in the gastronomic hub.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

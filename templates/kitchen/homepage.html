@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="text-center">
+      <h1 class="mb-2">Welcome to our Gastronomic Hub!</h1>
+      <br>
+      <h5 class="mb-5">Discover the Culinary Delights at Our Gastronomic Hub</h5>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card" style="background-color: #FF8C69;">
+          <div class="card-body text-center">
+            <h2 class="card-title">Dishes</h2>
+            <h5 class="card-text text-muted">{{ num_dishes }}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card" style="background-color: #FF8C69;">
+          <div class="card-body text-center">
+            <h2 class="card-title">Dish Types</h2>
+            <h5 class="card-text text-muted">{{ num_dish_types }}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card" style="background-color: #FF8C69;">
+          <div class="card-body text-center">
+            <h2 class="card-title">Cooks</h2>
+            <h5 class="card-text text-muted">{{ num_cooks }}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card" style="background-color: #FF8C69;">
+          <div class="card-body text-center">
+            <h2 class="card-title">Num of visits</h2>
+            <h5 class="card-text text-muted">{{ num_visits }} time{{ num_visits|pluralize }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

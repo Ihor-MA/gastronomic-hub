@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center">
+      <div class="card" style="max-width: 400px;">
+        <div class="card-header bg-dark text-white">
+          <h1 class="mb-0 text-center">
+            Username: {{ cook.username }}
+          </h1>
+        </div>
+
+        <div class="card-body">
+          <div class="card mb-3">
+            <div class="card-body">
+              <p class="card-text"><strong>First name:</strong> {{ cook.first_name }}</p>
+              <p class="card-text"><strong>Last name:</strong> {{ cook.last_name }}</p>
+              <p class="card-text"><strong>Years of experience:</strong> {{ cook.years_of_experience }}</p>
+              <p class="card-text"><strong>Is staff:</strong> {{ cook.is_staff }}</p>
+            </div>
+          </div>
+
+          <h4 class="text-center">Dishes</h4>
+
+          {% for dish in cook.dishes.all %}
+            <div class="card mb-3">
+              <div class="card-body">
+                <p class="card-text"><strong>Name:</strong> {{ dish.name }}</p>
+                <p class="card-text"><strong>Dish Type:</strong> {{ dish.dish_type.name }}</p>
+              </div>
+            </div>
+          {% empty %}
+            <p class="card-text">No cooks!</p>
+          {% endfor %}
+        </div>
+        <a href="{% url 'kitchen:cook-list' %}" class="btn btn-primary btn-lg btn-block" >Back</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

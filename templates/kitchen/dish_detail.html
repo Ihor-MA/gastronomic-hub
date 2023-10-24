@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center">
+      <div class="card" style="max-width: 400px;">
+        <div class="card-header bg-dark text-white">
+          <h1 class="mb-0 text-center">
+            {{ dish.name }}
+          </h1>
+        </div>
+
+        <div class="card-body">
+          <h4 class="text-center">Dish Type</h4>
+          <p class="list-group-item">{{ dish.dish_type.name }}</p>
+
+          <h4 class="mt-4 text-center">Description</h4>
+          <p class="list-group-item">{{ dish.description }}</p>
+
+          <h4 class="mt-4 text-center">Cooks</h4>
+
+          {% if user in dish.cooks.all %}
+            <a href="{% url 'kitchen:add-or-delete-cook' pk=dish.id %}" class="btn btn-danger btn-block link-to-page">
+              Delete me from this dish
+            </a>
+          {% else %}
+            <a href="{% url 'kitchen:add-or-delete-cook' pk=dish.id %}" class="btn btn-primary btn-block link-to-page">
+              Assign me to this dish
+            </a>
+          {% endif %}
+
+          <hr>
+
+          <ul class="list-group">
+            {% for cook in dish.cooks.all %}
+              <li class="list-group-item">{{ cook.username }} ({{ cook.first_name }} {{ cook.last_name }})</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <a href="{% url 'kitchen:dish-list' %}" class="btn btn-primary btn-lg btn-block">Back</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
