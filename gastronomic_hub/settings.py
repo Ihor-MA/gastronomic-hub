@@ -29,7 +29,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "RENDER" not in os.environ
 
-ALLOWED_HOSTS = ["127.0.0.1", "https://gastonomic-hub.onrender.com/"]
+ALLOWED_HOSTS = ["127.0.0.1", "gastonomic-hub.onrender.com"]
 
 # Application definition
 
